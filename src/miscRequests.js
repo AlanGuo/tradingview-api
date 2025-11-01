@@ -274,7 +274,7 @@ module.exports = {
    * @returns {Promise<PineIndicator>} Indicator
    */
   async getIndicator(id, version = 'last', session, signature) {
-    const indicID = id.replace(/ |%/g, '%25');
+    const indicID = encodeURIComponent(id);
     const proxyUrl = process.env.HTTPS_PROXY || process.env.HTTP_PROXY || "";
     const httpsProxyAgent = proxyUrl ? new HttpsProxyAgent(proxyUrl, { rejectUnauthorized: false }) : undefined;
     const { data } = await axios.get(
