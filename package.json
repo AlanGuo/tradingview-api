@@ -1,6 +1,6 @@
 {
   "name": "@alandlguo/tradingview-api",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "Tradingview instant stocks API, indicator alerts, trading bot, and more !",
   "main": "main.js",
   "module": "index.mjs",
