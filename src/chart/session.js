@@ -242,6 +242,12 @@ module.exports = (client) => class ChartSession {
           return;
         }
 
+        if (packet.type === 'series_completed') {
+          // Some symbols (or empty ranges) may never emit timescale_update; ensure update callbacks still fire.
+          this.#handleEvent('update', ['$prices']);
+          return;
+        }
+
         if (packet.type === 'symbol_error') {
           this.#handleError(`(${packet.data[1]}) Symbol error:`, packet.data[2]);
           return;
